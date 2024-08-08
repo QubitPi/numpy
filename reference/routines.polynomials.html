@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=1a705d66"></script>
+    <script src="../_static/documentation_options.js?v=487ca667"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -707,7 +707,7 @@ example, consider a simple linear fit to the following data:</p>
 <p>With the legacy polynomial module, a linear fit (i.e. polynomial of degree 1)
 could be applied to these data with <a class="reference internal" href="generated/numpy.polyfit.html#numpy.polyfit" title="numpy.polyfit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">polyfit</span></code></a>:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gh">Out[4]: </span><span class="go">array([0.93590135, 0.60216152])</span>
+<span class="gh">Out[4]: </span><span class="go">array([0.93690603, 0.06561379])</span>
 </pre></div>
 </div>
 <p>With the new polynomial API, the <a class="reference internal" href="generated/numpy.polynomial.polynomial.Polynomial.fit.html#numpy.polynomial.polynomial.Polynomial.fit" title="numpy.polynomial.polynomial.Polynomial.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>
@@ -715,7 +715,7 @@ class method is preferred:</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="n">p_fitted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">Polynomial</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="gp">In [6]: </span><span class="n">p_fitted</span>
-<span class="gh">Out[6]: </span><span class="go">Polynomial([4.81371759, 4.21155607], domain=[0., 9.], window=[-1.,  1.], symbol=&#39;x&#39;)</span>
+<span class="gh">Out[6]: </span><span class="go">Polynomial([4.28169093, 4.21607714], domain=[0., 9.], window=[-1.,  1.], symbol=&#39;x&#39;)</span>
 </pre></div>
 </div>
 <p>Note that the coefficients are given <em>in the scaled domain</em> defined by the
@@ -723,7 +723,7 @@ linear mapping between the <code class="docutils literal notranslate"><span clas
 <a class="reference internal" href="generated/numpy.polynomial.polynomial.Polynomial.convert.html#numpy.polynomial.polynomial.Polynomial.convert" title="numpy.polynomial.polynomial.Polynomial.convert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert</span></code></a> can be used to get the
 coefficients in the unscaled data domain.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [7]: </span><span class="n">p_fitted</span><span class="o">.</span><span class="n">convert</span><span class="p">()</span>
-<span class="gh">Out[7]: </span><span class="go">Polynomial([0.60216152, 0.93590135], domain=[-1.,  1.], window=[-1.,  1.], symbol=&#39;x&#39;)</span>
+<span class="gh">Out[7]: </span><span class="go">Polynomial([0.06561379, 0.93690603], domain=[-1.,  1.], window=[-1.,  1.], symbol=&#39;x&#39;)</span>
 </pre></div>
 </div>
 </section>
