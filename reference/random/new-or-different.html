@@ -40,7 +40,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=98a4e633"></script>
+    <script src="../../_static/documentation_options.js?v=1a705d66"></script>
     <script src="../../_static/doctools.js?v=888ff710"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -636,22 +636,22 @@ distributions or any distribution method that relies on them.</p></li>
 <span class="gp">In [3]: </span><span class="o">%</span><span class="k">timeit</span> -n 1 rng.standard_normal(100000)
 <span class="gp">   ...: </span><span class="o">%</span><span class="k">timeit</span> -n 1 numpy.random.standard_normal(100000)
 <span class="gp">   ...: </span>
-<span class="go">1.15 ms +- 13.2 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
-<span class="go">2.02 ms +- 8.7 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
+<span class="go">1.16 ms +- 13.3 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
+<span class="go">1.89 ms +- 19.9 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [4]: </span><span class="o">%</span><span class="k">timeit</span> -n 1 rng.standard_exponential(100000)
 <span class="gp">   ...: </span><span class="o">%</span><span class="k">timeit</span> -n 1 numpy.random.standard_exponential(100000)
 <span class="gp">   ...: </span>
-<span class="go">683 us +- 8.6 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
-<span class="go">1.4 ms +- 9.22 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
+<span class="go">537 us +- 17.9 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
+<span class="go">1.29 ms +- 8.71 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
 </pre></div>
 </div>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [5]: </span><span class="o">%</span><span class="k">timeit</span> -n 1 rng.standard_gamma(3.0, 100000)
 <span class="gp">   ...: </span><span class="o">%</span><span class="k">timeit</span> -n 1 numpy.random.standard_gamma(3.0, 100000)
 <span class="gp">   ...: </span>
-<span class="go">2.19 ms +- 23.3 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
-<span class="go">3.97 ms +- 13.8 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
+<span class="go">2.03 ms +- 27.2 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
+<span class="go">3.72 ms +- 34.7 us per loop (mean +- std. dev. of 7 runs, 1 loop each)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -686,13 +686,13 @@ with any signed or unsigned integer dtype.</p>
 <div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="gp">In [6]: </span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
 
 <span class="gp">In [7]: </span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<span class="gh">Out[7]: </span><span class="go">array([0.2204733 , 0.89161376, 0.72535368])</span>
+<span class="gh">Out[7]: </span><span class="go">array([0.90439292, 0.40468159, 0.13661407])</span>
 
 <span class="gp">In [8]: </span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="gh">Out[8]: </span><span class="go">array([0.07136565, 0.52547747, 0.5772482 ], dtype=float32)</span>
+<span class="gh">Out[8]: </span><span class="go">array([0.5552333 , 0.13868183, 0.47184682], dtype=float32)</span>
 
 <span class="gp">In [9]: </span><span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-<span class="gh">Out[9]: </span><span class="go">array([127, 200, 115], dtype=uint8)</span>
+<span class="gh">Out[9]: </span><span class="go">array([128,  38, 135], dtype=uint8)</span>
 </pre></div>
 </div>
 <ul>
@@ -713,10 +713,10 @@ BitGenerators in parallel.</p>
 <span class="gp">In [11]: </span><span class="n">existing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="gp">In [12]: </span><span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">out</span><span class="o">=</span><span class="n">existing</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
-<span class="gh">Out[12]: </span><span class="go">array([0.90157373, 0.29491232])</span>
+<span class="gh">Out[12]: </span><span class="go">array([0.12323397, 0.78134108])</span>
 
 <span class="gp">In [13]: </span><span class="nb">print</span><span class="p">(</span><span class="n">existing</span><span class="p">)</span>
-<span class="go">[0.90157373 0.29491232 0.         0.        ]</span>
+<span class="go">[0.12323397 0.78134108 0.         0.        ]</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -736,17 +736,17 @@ axis an operation is performed over for multi-dimensional arrays.</p></li>
 
 <span class="gp">In [17]: </span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gh">Out[17]: </span>
-<span class="go">array([[ 2,  0,  2,  3,  3],</span>
-<span class="go">       [ 6,  4,  6,  7,  7],</span>
-<span class="go">       [10,  8, 10, 11, 11]])</span>
+<span class="go">array([[ 2,  3,  2,  3,  1],</span>
+<span class="go">       [ 6,  7,  6,  7,  5],</span>
+<span class="go">       [10, 11, 10, 11,  9]])</span>
 
 <span class="gp">In [18]: </span><span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># Shuffle in-place</span>
 
 <span class="gp">In [19]: </span><span class="n">a</span>
 <span class="gh">Out[19]: </span>
-<span class="go">array([[ 3,  2,  1,  0],</span>
-<span class="go">       [ 7,  6,  5,  4],</span>
-<span class="go">       [11, 10,  9,  8]])</span>
+<span class="go">array([[ 3,  0,  2,  1],</span>
+<span class="go">       [ 7,  4,  6,  5],</span>
+<span class="go">       [11,  8, 10,  9]])</span>
 </pre></div>
 </div>
 <ul class="simple">
