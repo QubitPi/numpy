@@ -1,0 +1,53 @@
+# Copyright Jiaqi Liu
+---
+name: CI/CD
+
+"on":
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  documentation:
+    name: (Following .circleci/config.yml) Test Documentation Build & Deploy Documentation to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: update submodules
+        run: git submodule update --init
+      - name: install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz texlive-fonts-recommended texlive-latex-recommended \
+            texlive-latex-extra latexmk texlive-xetex texlive-lang-chinese doxygen
+      - name: build NumPy
+        run: |
+          python3.11 -m venv venv
+          . venv/bin/activate
+          pip install --progress-bar=off -r requirements/test_requirements.txt
+          pip install --progress-bar=off --pre --extra-index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple -r requirements/doc_requirements.txt
+          pip install . --config-settings=setup-args="-Dallow-noblas=true"
+      - name: create release notes
+        run: |
+          . venv/bin/activate
+          VERSION=$(pip show numpy | grep Version: | cut -d ' ' -f 2 | cut -c 1-5)
+          towncrier build --version $VERSION --yes
+          ./tools/ci/test_all_newsfragments_used.py
+      - name: build doc
+        run: |
+          . venv/bin/activate
+          cd doc
+          SPHINXOPTS="-W -n" make -e html
+      - name: Load CNAME file
+        run: echo numpy.qubitpi.org > doc/build/html/CNAME
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: doc/build/html/
+          user_name: QubitPi
+          user_email: jack20220723@gmail.com
